@@ -49,6 +49,8 @@ RUN yum install -y centos-release-scl && \
     rpm -V $INSTALL_PKGS && \
     yum -y clean all --enablerepo='*'
 
+RUN pecl install mongodb
+
 ENV PHP_CONTAINER_SCRIPTS_PATH=/usr/share/container-scripts/php/ \
     APP_DATA=${APP_ROOT}/src \
     PHP_DEFAULT_INCLUDE_PATH=/opt/rh/rh-php72/root/usr/share/pear \
@@ -68,6 +70,8 @@ COPY ./s2i/bin/ $STI_SCRIPTS_PATH
 
 # Copy extra files to the image.
 COPY ./root/ /
+
+COPY ./root/opt/app-root/etc/php.d/50-mongodb.ini $PHP_SYSCONF_PATH/php.d
 
 # Reset permissions of filesystem to default values
 RUN /usr/libexec/container-setup && rpm-file-permissions
