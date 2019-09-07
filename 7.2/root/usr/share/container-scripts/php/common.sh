@@ -96,19 +96,7 @@ function process_extending_files() {
 # - expand variables in *.conf and copy the files into /opt/app-root/etc/httpd.d directory
 #   (if there are files with same name source only file from $1)
 function process_extending_config_files() {
-  local custom_dir default_dir
-  custom_dir=$1
-  default_dir=$2
-
-  while read filename ; do
-    echo "=> sourcing $filename ..."
-    # Custom file is prefered
-    if [ -f $custom_dir/$filename ]; then
-       envsubst < $custom_dir/$filename > ${HTTPD_CONFIGURATION_PATH}/$filename
-    elif [ -f $default_dir/$filename ]; then
-       envsubst < $default_dir/$filename > ${HTTPD_CONFIGURATION_PATH}/$filename
-    fi
-  done <<<"$(get_matched_files "$custom_dir" "$default_dir" '*.conf' | sort -u)"
+ 
 }
 
 # Copy config files from application to the location where httpd expects them
