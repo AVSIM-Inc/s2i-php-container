@@ -96,7 +96,9 @@ function process_extending_files() {
 # - expand variables in *.conf and copy the files into /opt/app-root/etc/httpd.d directory
 #   (if there are files with same name source only file from $1)
 function process_extending_config_files() {
- 
+  local custom_dir default_dir
+  custom_dir=$1
+  default_dir=$2
 }
 
 # Copy config files from application to the location where httpd expects them
