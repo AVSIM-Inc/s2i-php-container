@@ -44,12 +44,10 @@ RUN yum install -y centos-release-scl && \
     INSTALL_PKGS="rh-php72-php-fpm rh-php72-php-cli rh-php72-php-mysqlnd rh-php72-php-pgsql rh-php72-php-bcmath \
                   rh-php72-php-gd rh-php72-php-intl rh-php72-php-ldap rh-php72-php-mbstring rh-php72-php-pdo \
                   rh-php72-php-process rh-php72-php-soap rh-php72-php-opcache rh-php72-php-xml \
-                  rh-php72-php-gmp rh-php72-php-pecl-apcu" && \
+                  rh-php72-php-gmp rh-php72-php-pecl-apcu rh-php72-php-pear" && \
     yum install -y --setopt=tsflags=nodocs $INSTALL_PKGS --nogpgcheck && \
     rpm -V $INSTALL_PKGS && \
     yum -y clean all --enablerepo='*'
-
-RUN pecl install mongodb
 
 ENV PHP_CONTAINER_SCRIPTS_PATH=/usr/share/container-scripts/php/ \
     APP_DATA=${APP_ROOT}/src \
@@ -64,6 +62,8 @@ ENV PHP_CONTAINER_SCRIPTS_PATH=/usr/share/container-scripts/php/ \
     HTTPD_DATA_ORIG_PATH=/opt/rh/httpd24/root/var/www \
     HTTPD_VAR_PATH=/opt/rh/httpd24/root/var \
     SCL_ENABLED=rh-php72
+
+RUN pecl install mongodb
 
 # Copy the S2I scripts from the specific language image to $STI_SCRIPTS_PATH
 COPY ./s2i/bin/ $STI_SCRIPTS_PATH
