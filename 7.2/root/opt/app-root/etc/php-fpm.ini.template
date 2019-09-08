@@ -17,13 +17,13 @@ include=${PHP_SYSCONF_PATH}/php-fpm.d/*.conf
 [global]
 ; Pid file
 ; Default Value: none
-pid = /run/php-fpm.pid
+pid = /tmp/php-fpm.pid
 
 ; Error log file
 ; If it's set to "syslog", log is sent to syslogd instead of being written
 ; in a local file.
 ; Default Value: /var/log/php-fpm.log
-error_log = /var/log/php-fpm/error.log
+error_log = syslog
 
 ; syslog_facility is used to specify what type of program is logging the
 ; message. This lets syslogd specify that messages from different facilities
