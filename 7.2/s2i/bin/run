@@ -38,4 +38,4 @@ envsubst < /opt/app-root/etc/php-fpm.d/www.conf > ${PHP_SYSCONF_PATH}/php-fpm.d/
 # pre-start files
 process_extending_files ${APP_DATA}/php-pre-start/ ${PHP_CONTAINER_SCRIPTS_PATH}/pre-start/
 
-#exec php-fpm
+exec php-fpm
