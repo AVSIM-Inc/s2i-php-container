@@ -63,7 +63,7 @@ ENV PHP_CONTAINER_SCRIPTS_PATH=/usr/share/container-scripts/php/ \
     HTTPD_VAR_PATH=/opt/rh/httpd24/root/var \
     SCL_ENABLED=rh-php72
 
-RUN pecl install mongodb
+RUN pecl install mongodb redis
 
 # Copy the S2I scripts from the specific language image to $STI_SCRIPTS_PATH
 COPY ./s2i/bin/ $STI_SCRIPTS_PATH
@@ -72,6 +72,8 @@ COPY ./s2i/bin/ $STI_SCRIPTS_PATH
 COPY ./root/ /
 
 COPY ./root/opt/app-root/etc/php.d/50-mongodb.ini $PHP_SYSCONF_PATH/php.d
+
+COPY ./root/opt/app-root/etc/php.d/50-redis.ini $PHP_SYSCONF_PATH/php.d
 
 # Reset permissions of filesystem to default values
 RUN /usr/libexec/container-setup && rpm-file-permissions
