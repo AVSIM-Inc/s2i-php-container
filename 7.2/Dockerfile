@@ -45,7 +45,7 @@ RUN yum install -y centos-release-scl && \
                   rh-php72-php-gd rh-php72-php-intl rh-php72-php-ldap rh-php72-php-mbstring rh-php72-php-pdo \
                   rh-php72-php-process rh-php72-php-soap rh-php72-php-opcache rh-php72-php-xml \
                   rh-php72-php-gmp rh-php72-php-pecl-apcu rh-php72-php-pear rh-php72-php-devel sclo-php72-php-imap" && \
-    yum install -y --enablerepo=centos-sclo-sclo-testing --setopt=tsflags=nodocs $INSTALL_PKGS --nogpgcheck && \
+    yum install -y --enablerepo=centos-sclo-sclo-testing,epel --setopt=tsflags=nodocs $INSTALL_PKGS --nogpgcheck && \
     rpm -V $INSTALL_PKGS && \
     yum -y clean all --enablerepo='*'
 
