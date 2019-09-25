@@ -46,7 +46,6 @@ RUN yum install -y centos-release-scl epel-release && \
                   rh-php72-php-process rh-php72-php-soap rh-php72-php-opcache rh-php72-php-xml \
                   rh-php72-php-gmp rh-php72-php-pecl-apcu rh-php72-php-pear rh-php72-php-devel sclo-php72-php-imap msmtp ca-certificates" && \
     yum install -y --enablerepo=centos-sclo-sclo-testing,epel --setopt=tsflags=nodocs $INSTALL_PKGS --nogpgcheck && \
-    rpm -V $INSTALL_PKGS && \
     yum -y clean all --enablerepo='*'
 
 ENV PHP_CONTAINER_SCRIPTS_PATH=/usr/share/container-scripts/php/ \
