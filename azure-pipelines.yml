@@ -20,7 +20,9 @@ stages:
     - task: Docker@2
       displayName: Build an image
       inputs:
-        command: build
+        command: buildAndPush
+        containerRegistry: 'Github'
+        repository: 'docker.pkg.github.com/AVSIM-Inc/s2i-php-container'
         dockerfile: '$(Build.SourcesDirectory)/7.2/Dockerfile'
         tags: |
           $(tag)
