@@ -22,7 +22,7 @@ stages:
       inputs:
         command: buildAndPush
         containerRegistry: 'Github'
-        repository: 'AVSIM-Inc/s2i-php-container'
+        repository: 'AVSIM-Inc/s2i-php-container/phpfpm-72-centos7'
         dockerfile: '$(Build.SourcesDirectory)/7.2/Dockerfile'
         tags: |
           $(tag)
